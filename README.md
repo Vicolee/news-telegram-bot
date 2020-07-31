@@ -72,6 +72,10 @@ To check status of your bot, type `/checkstatus`. By default, your bot should al
 
 <img src="images/status.jpeg" width="400" height="600" />
 
+Now that everything has been setup, the bot will send you news related to the Crypto coins you have indicated interest in earlier using the `/news` command. See below for an example of a news recently sent to me:
+
+<img src="images/news.jpg" width="325" height="600" />
+
 ### Webhook Feature
 
 Firstly, it has a webhook that handles all incoming messages and replies the user with its respective response. See [webhooks_controller.rb](https://github.com/Vicolee/news-telegram-bot/blob/master/app/controllers/webhooks_controller.rb) for the script. [webhooks_controller.rb](https://github.com/Vicolee/news-telegram-bot/blob/master/app/controllers/webhooks_controller.rb) script goes on to call the script [bot_news_dispatcher.rb](https://github.com/Vicolee/news-telegram-bot/blob/master/app/models/bot_message_dispatcher.rb) which subsequently calls the respective command in the [bot_command](https://github.com/Vicolee/news-telegram-bot/blob/master/app/models/bot_command) folder.
