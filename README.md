@@ -70,7 +70,7 @@ What do I do now that I do not want the bot to keep spamming me?
 
 To check status of your bot, type `/checkstatus`. By default, your bot should already be working on sending you messages. If you want to pause your bot, type `/pause`. Should you wish to resume your bot again, type `/resume`. Now, your bot will re-continue to send you news that you have added to your coin list.
 
-<img src="images/status.jpeg" width="325" height="600" />
+<img src="images/status.jpeg" width="400" height="600" />
 
 ### Webhook Feature
 
