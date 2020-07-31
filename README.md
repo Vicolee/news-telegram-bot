@@ -1,8 +1,10 @@
-# README
+# news-telegram-bot-template
 
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
+
+    * [Bot Simulation](#bot-simulation)
 
     * [Webhook Feature](#webhook-feature)
 
@@ -30,9 +32,45 @@
 
 ## 1. Introduction
 
-This project was created to help users who are interested in building their own telegram bot to send news to themselves. While it is not only limited to news, depending on the API link input under the [config file](https://github.com/Vicolee/news-telegram-bot/blob/master/config/credentials), I initially built this with the intention of scraping crypto news and sending to users via telegram on a regular time interval. Thus, kindly make the necessary adjustments should your API formatting be different.
+This project was created to help users who are interested in building their own telegram bot to send news to themselves. While it is not only limited to news, depending on the API link input under the [config file](https://github.com/Vicolee/news-telegram-bot/blob/master/config/credentials), I initially built this with the intention of scraping crypto news and sending to users via telegram on a regular time interval. Thus, kindly make the necessary adjustments should your API formatting be different.  If you want to see a simulation of the bot, proceed to [Bot Simulation](#bot-simulation).
 
-There are two main features for this repository's telegram bot.
+Else, if you just want to see how to build the bot, skip straight to [Wehbook Feature](#webhook-feature) and [News-Scrape-and-Send Feature](#news-scrape-and-send-feature) to see the two main functionalities for this repository's telegram bot.
+
+### Bot Simulation
+
+In this section, I will be portraying a visual rundown of how the bot would look like.
+
+First, users will have to setup their account with the bot. To do so, they will type `/start`
+
+<img src="images/start.png" width="325" height="600" />
+
+Next, type `/help` to view the list of available commands and their descriptions:
+
+<img src="images/help.png" width="325" height="600" />
+
+To select coins that you are interested in receiving news about, type `/news`. A list of [inline keyboard markup](https://core.telegram.org/bots/2-0-intro#callback-buttons) will appear, showing the coins that are available for the bot:
+
+<img src="images/select_coins.png" width="325" height="600" />
+
+Press on the coin that you are interested in adding to your coin list. A inline keyboard reply will appear. Press the coin to add to coinlist. In the below case, I pressed on 'BTC' and an auto-reply is shown at the top of the screen:
+
+<img src="images/add_btc.jpg" width="325" height="600" />
+
+Then, I pressed on 'BTC' again to remove 'BTC' from my coinlist:
+
+<img src="images/remove_btc.jpg" width="325" height="600" />
+
+After which, I added all the coins available to my coin list. Then, to check my current bag of coins, I typed `/coinlist`:
+
+<img src="images/coinlist.png" width="325" height="600" />
+
+Realise that I have already selected 12/12 of the available coins.
+
+What do I do now that I do not want the bot to keep spamming me?
+
+To check status of your bot, type `/checkstatus`. By default, your bot should already be working on sending you messages. If you want to pause your bot, type `/pause`. Should you wish to resume your bot again, type `/resume`. Now, your bot will re-continue to send you news that you have added to your coin list.
+
+<img src="images/status.jpeg" width="325" height="600" />
 
 ### Webhook Feature
 
@@ -40,7 +78,7 @@ Firstly, it has a webhook that handles all incoming messages and replies the use
 
 ### News-Scrape-and-Send Feature
 
-Secondly, it has a [rake task](https://github.com/Vicolee/news-telegram-bot/blob/master/lib/tasks/dispatch_news.rake) that scrapes news from the API, as specified in [credentials](https://github.com/Vicolee/news-telegram-bot/blob/master/config/credentials), and sends to users news that they have indicated their interest in via telegram bot's inline keyboard button feature which I've integrated into the script [bot_command/news.rb](https://github.com/Vicolee/news-telegram-bot/blob/master/app/models/bot_command/news.rb).
+Secondly, it has a [rake task](https://github.com/Vicolee/news-telegram-bot/blob/master/lib/tasks/dispatch_news.rake) that scrapes news from the API, as specified in [credentials](https://github.com/Vicolee/news-telegram-bot/blob/master/config/credentials), and sends to users news that they have indicated their interest in via telegram bot's [inline keyboard button feature](https://core.telegram.org/bots/2-0-intro#callback-buttons) which I've integrated into the script [bot_command/news.rb](https://github.com/Vicolee/news-telegram-bot/blob/master/app/models/bot_command/news.rb).
 
 Running the command `rails server` will automatically run the webhook. However, you will need to manually run [rake dispatch_news[insert_time_interval(seconds)]](https://github.com/Vicolee/news-telegram-bot/blob/master/lib/tasks/dispatch_news.rake) to begin the second function of scraping news and sending news every specified interval.
 
